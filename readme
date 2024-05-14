@@ -1,0 +1,42 @@
+This project is a step-by-step guide to deploying a simple app using minikube.
+
+To get started, follow these instructions:
+
+1. Start a minikube cluster by running the following command:
+    ```
+    minikube start
+    ```
+
+2. Access the Kubernetes dashboard running within the minikube cluster:
+    ```
+    minikube dashboard
+    ```
+
+3. Build image using this command: 
+    ```
+    docker build -t my-local-image:1.0 .
+    ```
+
+3. Once the cluster is up and running, you can interact with it using kubectl, just like any other Kubernetes cluster. For example, you can start a server by running:
+    ```
+    kubectl create deployment test-minikube --image=my-local-image:1.0 
+    ```
+
+4. Expose the deployment as a NodePort service:
+    ```
+    kubectl expose deployment test-minikube --type=NodePort --port=3000
+    ```
+
+5. To open the exposed endpoint in your browser, use the following command:
+    ```
+    minikube service test-minikube
+    ```
+
+That's it! You have successfully deployed a simple app using minikube.
+
+In case minikube is not able to read local images, run following commands to make it work - 
+    ```
+    minikube docker-env
+    eval $(minikube -p minikube docker-env)
+    docker images
+    ```
