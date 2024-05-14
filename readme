@@ -40,3 +40,9 @@ In case minikube is not able to read local images, run following commands to mak
     eval $(minikube -p minikube docker-env)
     docker images
     ```
+
+
+Note - Here deployment.yaml and service.yaml are not getting used. We can use following commands to trigger same things with given config ->
+
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
