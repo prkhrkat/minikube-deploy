@@ -7,8 +7,7 @@ const port = 3000;
 const server = http.createServer(async (req, res) => {
   try {
     const response = await fetch(process.env.END_URL);
-    // log endurl to console
-    console.log('END_URL:', process.env.END_URL);
+    
     if (response.ok) {
       const data = await response.text();
       res.statusCode = 200;
@@ -26,4 +25,6 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
+  // log endurl to console
+  console.log('END_URL:', process.env.END_URL);
 });
