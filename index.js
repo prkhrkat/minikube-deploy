@@ -6,7 +6,11 @@ const port = 3000;
 
 const server = http.createServer(async (req, res) => {
   try {
-    const response = await fetch(process.env.END_URL);
+
+    const backendHost = process.env.PK_TEST_BACKEND_TEST_SERVICE_SERVICE_HOST;
+    const backendPort = process.env.PK_TEST_BACKEND_TEST_SERVICE_SERVICE_PORT;
+    const backendURL = `http://${backendHost}:${backendPort}`;
+    const response = await fetch(backendURL);
     
     if (response.ok) {
       const data = await response.text();
