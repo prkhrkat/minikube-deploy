@@ -30,5 +30,8 @@ const server = http.createServer(async (req, res) => {
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
   // log endurl to console
-  console.log('END_URL:', process.env.END_URL);
+  const backendHost = process.env.PK_TEST_BACKEND_TEST_SERVICE_SERVICE_HOST;
+  const backendPort = process.env.PK_TEST_BACKEND_TEST_SERVICE_SERVICE_PORT;
+  const backendURL = `http://${backendHost}:${backendPort}`;
+  console.log('END_URL:', backendURL);
 });
